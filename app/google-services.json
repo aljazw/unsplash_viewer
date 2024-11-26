@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "817245160490",
+    "project_id": "drive-clone-project-2024",
+    "storage_bucket": "drive-clone-project-2024.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817245160490:android:d48090614d14b7f2d9af53",
+        "android_client_info": {
+          "package_name": "com.example.gdrivec"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqDGzKGH_42z8b45xWQPk5h6GkduC1cIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

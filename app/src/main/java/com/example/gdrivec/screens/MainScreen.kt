@@ -18,11 +18,12 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.example.gdrivec.auth.AuthViewModel
 import com.example.gdrivec.components.NavItem
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
-
+fun MainScreen( navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {
     val navItemList = listOf(
         NavItem("Home", Icons.Default.Home),
         NavItem("Add", Icons.Default.Add),
@@ -51,17 +52,17 @@ fun MainScreen(modifier: Modifier = Modifier) {
             }
         }
     ) { innerPadding ->
-        ContentScreen(modifier = Modifier.padding(innerPadding),selectedIndex)
+        ContentScreen(modifier = Modifier.padding(innerPadding),selectedIndex, navController, authViewModel)
     }
 }
 
 @Composable
-fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int) {
+fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int, navController: NavController, authViewModel: AuthViewModel) {
     Box(modifier = modifier.fillMaxSize()) {
         when(selectedIndex){
             0-> HomeScreen()
             1-> AddScreen()
-            2-> SettingsScreen()
+            2-> SettingsScreen( navController, authViewModel)
         }
     }
 }
