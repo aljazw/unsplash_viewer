@@ -3,10 +3,8 @@ package com.example.gdrivec.screens
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,11 +37,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.gdrivec.auth.AuthState
-import com.example.gdrivec.auth.AuthViewModel
+import com.example.gdrivec.viewmodel.AuthState
+import com.example.gdrivec.viewmodel.AuthViewModel
 
 @Composable
-fun LoginScreen( navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {
+fun LoginScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {
 
    var email by remember {
        mutableStateOf( "")

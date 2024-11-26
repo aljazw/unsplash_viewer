@@ -13,11 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
-import com.example.gdrivec.auth.AuthState
-import com.example.gdrivec.auth.AuthViewModel
+import com.example.gdrivec.viewmodel.AuthState
+import com.example.gdrivec.viewmodel.AuthViewModel
 
 @Composable
-fun SettingsScreen( navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier,){
+fun SettingsScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier,){
 
     val authState = authViewModel.authState.observeAsState()
 

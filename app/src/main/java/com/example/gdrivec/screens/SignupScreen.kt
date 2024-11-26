@@ -1,13 +1,10 @@
 package com.example.gdrivec.screens
 
-import android.transition.CircularPropagation
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,18 +31,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.gdrivec.auth.AuthState
-import com.example.gdrivec.auth.AuthViewModel
+import com.example.gdrivec.viewmodel.AuthState
+import com.example.gdrivec.viewmodel.AuthViewModel
+
 
 @Composable
-fun SignupScreen( navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ){
+fun SignupScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ){
     var email by remember {
         mutableStateOf( "")
     }

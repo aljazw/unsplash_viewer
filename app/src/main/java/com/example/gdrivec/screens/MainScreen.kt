@@ -19,11 +19,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.gdrivec.auth.AuthViewModel
+import com.example.gdrivec.viewmodel.AuthViewModel
 import com.example.gdrivec.components.NavItem
 
 @Composable
-fun MainScreen( navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {
+fun MainScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {
     val navItemList = listOf(
         NavItem("Home", Icons.Default.Home),
         NavItem("Add", Icons.Default.Add),

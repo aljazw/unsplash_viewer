@@ -1,4 +1,4 @@
-package com.example.gdrivec.auth
+package com.example.gdrivec.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,7 +36,8 @@ class AuthViewModel : ViewModel(){
                 if(task.isSuccessful){
                     _authState.value = AuthState.Authenticated
                 }else{
-                    _authState.value = AuthState.Error(task.exception?.message?:"Something went wrong")
+                    _authState.value =
+                        AuthState.Error(task.exception?.message ?: "Something went wrong")
                 }
             }
     }
@@ -53,7 +54,8 @@ class AuthViewModel : ViewModel(){
                 if(task.isSuccessful){
                     _authState.value = AuthState.Authenticated
                 }else{
-                    _authState.value = AuthState.Error(task.exception?.message?:"Something went wrong")
+                    _authState.value =
+                        AuthState.Error(task.exception?.message ?: "Something went wrong")
                 }
             }
     }
@@ -62,10 +64,6 @@ class AuthViewModel : ViewModel(){
         auth.signOut()
         _authState.value = AuthState.Unauthenticated
     }
-
-
-
-
 }
 
 

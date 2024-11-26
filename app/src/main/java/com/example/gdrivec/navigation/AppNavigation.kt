@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.gdrivec.auth.AuthViewModel
+import com.example.gdrivec.viewmodel.AuthViewModel
 import com.example.gdrivec.screens.LoginScreen
 import com.example.gdrivec.screens.MainScreen
 import com.example.gdrivec.screens.SignupScreen
