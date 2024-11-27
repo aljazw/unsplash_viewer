@@ -1,0 +1,148 @@
+package com.example.gdrivec.screens
+
+import android.widget.Toast
+import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.example.gdrivec.components.FirestoreImage
+import com.example.gdrivec.components.FirestoreRepository
+
+
+@Composable
+fun FavoriteScreen(modifier: Modifier = Modifier){
+
+    val context = LocalContext.current
+    val firestoreRepository = FirestoreRepository()
+    val trigger = remember { mutableStateOf(0) }
+
+
+    val images = remember { mutableStateListOf<FirestoreImage>() }
+    val isLoading = remember { mutableStateOf(true) }
+
+
+    LaunchedEffect(trigger.value) {
+        firestoreRepository.fetchUserImages(
+            onSuccess = { fetchedImages ->
+                images.clear()
+                images.addAll(fetchedImages)
+                isLoading.value = false
+            },
+            onFailure = { error ->
+                isLoading.value = false
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    Column(
+        modifier = modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        if(isLoading.value) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+        } else {
+            if (images.isEmpty()) {
+                Text(
+                    text ="You don't have any saved images",
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(all = 20.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+            } else {
+                LazyColumn {
+                    itemsIndexed(images) { index, image ->
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(300.dp)
+                                .padding(8.dp),
+                            shape = RoundedCornerShape(16.dp),
+                            shadowElevation = 8.dp,
+                            color = MaterialTheme.colorScheme.surface
+                        ) {
+                            Box(modifier = Modifier.fillMaxSize()) {
+                                AsyncImage(
+                                    model = image.urls.small,
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(16.dp))
+                                        .fillMaxSize()
+                                        .pointerInput(Unit) {
+                                            detectTapGestures(
+                                                onDoubleTap = {
+                                                    firestoreRepository.removeImageFromFirestore(image.id, context) {
+                                                        trigger.value++
+                                                    }
+                                                }
+                                            )
+                                        }
+                                )
+                                image.description?.takeIf { it.isNotEmpty() }?.let {
+                                    Column(
+                                        modifier = Modifier.fillMaxSize(),
+                                        verticalArrangement = Arrangement.Bottom,
+                                        horizontalAlignment = Alignment.CenterHorizontally
+                                    ) {
+                                        Row(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(vertical = 10.dp)
+                                                .background(Color.DarkGray.copy(alpha = 0.5f)),
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.Center
+                                        ) {
+                                            Text(
+                                                text = it,
+                                                fontSize = 16.sp,
+                                                color = Color.White,
+                                                textAlign = TextAlign.Center
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+

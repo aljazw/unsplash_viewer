@@ -7,6 +7,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -26,7 +27,7 @@ import com.example.gdrivec.components.NavItem
 fun MainScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {
     val navItemList = listOf(
         NavItem("Home", Icons.Default.Home),
-        NavItem("Add", Icons.Default.Add),
+        NavItem("Likes", Icons.Default.ThumbUp),
         NavItem("Settings", Icons.Default.Settings),
     )
     var selectedIndex by remember {
@@ -61,7 +62,7 @@ fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int, navControll
     Box(modifier = modifier.fillMaxSize()) {
         when(selectedIndex){
             0-> HomeScreen()
-            1-> AddScreen()
+            1-> FavoriteScreen()
             2-> SettingsScreen( navController, authViewModel)
         }
     }

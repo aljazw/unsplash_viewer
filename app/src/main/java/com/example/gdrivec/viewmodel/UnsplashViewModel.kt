@@ -74,27 +74,4 @@ class UnsplashViewModel : ViewModel() {
             }
         }
     }
-
-
-//    fun searchImages(query: String) {
-//        viewModelScope.launch {
-//            _isLoading.value = true
-//            try {
-//                // Making the network request via Retrofit
-//                val response = RetrofitClient.unsplashApi.searchPhotos(
-//                    query = query,
-//                    clientId = , // Replace with your actual API key
-//                    page = 1,
-//                    perPage = 20,
-//                )
-//                // Updating LiveData with the results
-//                _images.value = response.results
-//            } catch (e: Exception) {
-//                e.printStackTrace()  // Handle the error
-//            } finally {
-//                // Hide the loading indicator
-//                _isLoading.value = false
-//            }
-//        }
-//    }
 }

@@ -6,6 +6,7 @@ data class UnsplashResponse(
 
 data class UnsplashImage(
     val id: String,
+    val description: String?,
     val urls: ImageUrls
 )
 
