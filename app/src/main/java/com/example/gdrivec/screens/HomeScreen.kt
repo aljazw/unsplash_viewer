@@ -1,6 +1,5 @@
 package com.example.gdrivec.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -44,11 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.gdrivec.components.FirestoreRepository
-import com.example.gdrivec.components.UnsplashImage
 import com.example.gdrivec.viewmodel.UnsplashViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -98,7 +93,7 @@ fun HomeScreen(viewModel: UnsplashViewModel = viewModel(), modifier: Modifier = 
                     )
                 }
             },
-            modifier = Modifier.padding(bottom = 15.dp),
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp, bottom = 15.dp),
         ) {}
         if(isLoading) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
