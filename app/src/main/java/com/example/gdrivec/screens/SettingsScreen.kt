@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -31,11 +32,9 @@ import com.example.gdrivec.viewmodel.AuthViewModel
 
 
 @Composable
-fun SettingsScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier,){
+fun SettingsScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier){
 
     val authState = authViewModel.authState.observeAsState()
-
-
 
     LaunchedEffect(authState.value) {
         when(authState.value){
@@ -94,5 +93,65 @@ fun SettingsScreen(navController: NavController, authViewModel: AuthViewModel, m
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun SettingsScreenVisualPreview() {
+    // Mock Modifier
+    val previewModifier = Modifier
+
+    Column(
+        modifier = previewModifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Missing features? Just consider it 'minimalistic'!",
+            modifier = Modifier
+                .padding(start = 10.dp, end = 10.dp, bottom = 42.dp)
+                .fillMaxWidth(),
+            style = TextStyle(
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 1.5.sp,
+                textAlign = TextAlign.Center
+            )
+        )
+
+        val image: Painter = painterResource(id = R.drawable.settingspic)
+        Image(
+            painter = image,
+            contentDescription = "Sample Image",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp)
+        )
+
+        TextButton(
+            onClick = { /* No action in preview */ },
+            modifier = Modifier.padding(bottom = 40.dp),
+        ) {
+            Text(
+                text = "Sign out",
+                style = TextStyle(
+                    color = CustomTheme.colors.error,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.2.sp,
+                    shadow = Shadow(
+                        color = Color.Black.copy(alpha = 0.4f),
+                        offset = Offset(1f, 1f),
+                        blurRadius = 4f
+                    )
+                ),
+            )
+        }
+    }
+}
+
+
+
 
 

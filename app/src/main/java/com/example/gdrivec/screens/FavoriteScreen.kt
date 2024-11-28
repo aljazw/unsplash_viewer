@@ -1,6 +1,7 @@
 package com.example.gdrivec.screens
 
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -30,13 +31,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.gdrivec.components.FirestoreImage
 import com.example.gdrivec.components.FirestoreRepository
+import com.example.gdrivec.components.MockImage
 
 
 @Composable
@@ -83,7 +87,7 @@ fun FavoriteScreen(modifier: Modifier = Modifier){
                 )
             } else {
                 LazyColumn {
-                    itemsIndexed(images) { index, image ->
+                    items(images) {  image ->
                         Surface(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -142,6 +146,90 @@ fun FavoriteScreen(modifier: Modifier = Modifier){
         }
     }
 }
+
+
+@Preview(showBackground = true)
+@Composable
+fun ImageListPreview() {
+    val placeholderPainter = painterResource(android.R.drawable.ic_menu_gallery) // Built-in placeholder
+
+    val mockImages = listOf(
+        MockImage("Image 1", placeholderPainter),
+        MockImage("Image 2", placeholderPainter),
+        MockImage("Image 3", placeholderPainter)
+    )
+
+    val isLoading = remember { mutableStateOf(false) } // Mock loading state
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        if (isLoading.value) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
+        } else {
+            if (mockImages.isEmpty()) {
+                Text(
+                    text = "You don't have any saved images",
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(all = 20.dp)
+                        .align(Alignment.CenterHorizontally)
+                )
+            } else {
+                LazyColumn {
+                    items(mockImages) {image ->
+                        Surface(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(300.dp)
+                                .padding(8.dp),
+                            shape = RoundedCornerShape(16.dp),
+                            shadowElevation = 8.dp,
+                            color = MaterialTheme.colorScheme.surface
+                        ) {
+                            Box(modifier = Modifier.fillMaxSize()) {
+                                Image(
+                                    painter = image.painter,
+                                    contentDescription = null,
+                                    contentScale = ContentScale.Crop,
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(16.dp))
+                                        .fillMaxSize()
+                                )
+                                image.description?.takeIf { it.isNotEmpty() }?.let {
+                                    Column(
+                                        modifier = Modifier.fillMaxSize(),
+                                        verticalArrangement = Arrangement.Bottom,
+                                        horizontalAlignment = Alignment.CenterHorizontally
+                                    ) {
+                                        Row(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(vertical = 10.dp)
+                                                .background(Color.DarkGray.copy(alpha = 0.5f)),
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.Center
+                                        ) {
+                                            Text(
+                                                text = it,
+                                                fontSize = 16.sp,
+                                                color = Color.White,
+                                                textAlign = TextAlign.Center
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 
 
