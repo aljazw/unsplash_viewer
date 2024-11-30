@@ -1,4 +1,4 @@
-package com.example.gdrivec
+package com.example.unsplashviewer
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

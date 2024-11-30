@@ -1,4 +1,4 @@
-package com.example.gdrivec.screens
+package com.example.unsplashviewer.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,8 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.gdrivec.components.NavItem
-import com.example.gdrivec.viewmodel.AuthViewModel
+import com.example.unsplashviewer.components.NavItem
+import com.example.unsplashviewer.viewmodel.AuthViewModel
 
 @Composable
 fun MainScreen(navController: NavController, authViewModel: AuthViewModel, modifier: Modifier = Modifier ) {

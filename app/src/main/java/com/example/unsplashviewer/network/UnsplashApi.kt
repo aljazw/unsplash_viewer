@@ -1,6 +1,6 @@
-package com.example.gdrivec.network
+package com.example.unsplashviewer.network
 
-import com.example.gdrivec.components.UnsplashResponse
+import com.example.unsplashviewer.components.UnsplashResponse
 
 import retrofit2.http.GET
 import retrofit2.http.Query

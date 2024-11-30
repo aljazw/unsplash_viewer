@@ -1,4 +1,4 @@
-package com.example.gdrivec.screens
+package com.example.unsplashviewer.screens
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -38,9 +38,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.gdrivec.components.FirestoreImage
-import com.example.gdrivec.components.FirestoreRepository
-import com.example.gdrivec.components.MockImage
+import com.example.unsplashviewer.components.FirestoreImage
+import com.example.unsplashviewer.components.FirestoreRepository
+import com.example.unsplashviewer.components.MockImage
 
 
 @Composable

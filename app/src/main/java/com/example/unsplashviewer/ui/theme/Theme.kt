@@ -1,4 +1,4 @@
-package com.example.gdrivec.ui.theme
+package com.example.unsplashviewer.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -51,7 +51,7 @@ val LocalExtendedColors = staticCompositionLocalOf {
 }
 
 @Composable
-fun GDriveCTheme(
+fun UnsplashViewTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

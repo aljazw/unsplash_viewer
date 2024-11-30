@@ -1,4 +1,4 @@
-package com.example.gdrivec.components
+package com.example.unsplashviewer.components
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

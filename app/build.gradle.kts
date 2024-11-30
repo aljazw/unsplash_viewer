@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.gdrivec"
+    namespace = "com.example.unsplashviewer"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.gdrivec"
+        applicationId = "com.example.unsplashviewer"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

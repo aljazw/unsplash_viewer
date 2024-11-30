@@ -1,4 +1,4 @@
-package com.example.gdrivec.ui.theme
+package com.example.unsplashviewer.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

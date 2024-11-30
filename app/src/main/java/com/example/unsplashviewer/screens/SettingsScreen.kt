@@ -1,4 +1,4 @@
-package com.example.gdrivec.screens
+package com.example.unsplashviewer.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -25,10 +25,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.gdrivec.R
-import com.example.gdrivec.ui.theme.CustomTheme
-import com.example.gdrivec.viewmodel.AuthState
-import com.example.gdrivec.viewmodel.AuthViewModel
+import com.example.unsplashviewer.R
+import com.example.unsplashviewer.ui.theme.CustomTheme
+import com.example.unsplashviewer.viewmodel.AuthState
+import com.example.unsplashviewer.viewmodel.AuthViewModel
 
 
 @Composable

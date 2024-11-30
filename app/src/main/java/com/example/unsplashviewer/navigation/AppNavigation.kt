@@ -1,14 +1,14 @@
-package com.example.gdrivec.navigation
+package com.example.unsplashviewer.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.gdrivec.viewmodel.AuthViewModel
-import com.example.gdrivec.screens.LoginScreen
-import com.example.gdrivec.screens.MainScreen
-import com.example.gdrivec.screens.SignupScreen
+import com.example.unsplashviewer.viewmodel.AuthViewModel
+import com.example.unsplashviewer.screens.LoginScreen
+import com.example.unsplashviewer.screens.MainScreen
+import com.example.unsplashviewer.screens.SignupScreen
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier, authViewModel: AuthViewModel){

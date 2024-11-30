@@ -1,4 +1,4 @@
-package com.example.gdrivec.screens
+package com.example.unsplashviewer.screens
 
 
 
@@ -48,9 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.example.gdrivec.components.FirestoreRepository
-import com.example.gdrivec.components.MockImage
-import com.example.gdrivec.viewmodel.UnsplashViewModel
+import com.example.unsplashviewer.components.FirestoreRepository
+import com.example.unsplashviewer.components.MockImage
+import com.example.unsplashviewer.viewmodel.UnsplashViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,13 +1,12 @@
-package com.example.gdrivec.viewmodel
+package com.example.unsplashviewer.viewmodel
 
 
-import androidx.compose.runtime.currentCompositionErrors
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gdrivec.components.UnsplashImage
-import com.example.gdrivec.network.RetrofitClient
+import com.example.unsplashviewer.components.UnsplashImage
+import com.example.unsplashviewer.network.RetrofitClient
 
 import kotlinx.coroutines.launch
 

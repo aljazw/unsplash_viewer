@@ -1,4 +1,4 @@
-package com.example.gdrivec
+package com.example.unsplashviewer
 
 import org.junit.Test
 

@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "GDriveC"
+rootProject.name = "unsplashviewer"
 include(":app")

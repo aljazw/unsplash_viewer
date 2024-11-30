@@ -1,4 +1,4 @@
-package com.example.gdrivec.components
+package com.example.unsplashviewer.components
 
 data class FirestoreImage(
     val id: String,

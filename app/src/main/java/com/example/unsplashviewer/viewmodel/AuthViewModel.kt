@@ -1,4 +1,4 @@
-package com.example.gdrivec.viewmodel
+package com.example.unsplashviewer.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
