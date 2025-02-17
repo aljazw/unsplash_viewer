@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.unsplashviewer.BuildConfig
 import com.example.unsplashviewer.components.UnsplashImage
 import com.example.unsplashviewer.network.RetrofitClient
 
@@ -23,6 +24,7 @@ class UnsplashViewModel : ViewModel() {
     val errorMessage: LiveData<String?> = _errorMessage
 
     // Pagination variables
+    private val apiKey = BuildConfig.UNSPLASH_API_KEY
     private var currentPage = 1
     private var isLastPage = false // To avoid fetching if we've reached the last page
     private var query: String = ""
@@ -51,7 +53,7 @@ class UnsplashViewModel : ViewModel() {
             try {
                 val response = RetrofitClient.unsplashApi.searchPhotos(
                     query = query,
-                    clientId = "S8MTdNEY09YPKgHQJo_LVwZ6uwRu9lapm3JlE8aR2NM",
+                    clientId = apiKey,
                     page = currentPage,
                     perPage = 10
                 )
